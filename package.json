@@ -1,0 +1,17 @@
+{
+  "name": "app-nutricion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "dependencies": {
+    "electron": "^5.0.5",
+    "electron-reload": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

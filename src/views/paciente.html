@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+    <title>Nutri & Vida - Paciente</title>
+</head>
+
+<body>
+    <div class="ui segment">
+        <img class="ui centered medium circular image" src="">
+        <h3 class="ui center aligned icon header">Historia Personal</h3>
+    </div>
+    <div class="ui segment">
+        <form class="ui form">
+            <div class="three fields">
+                <div class="field">
+                    <label>Nombre</label>
+                    <input type="text" id='nombre' placeholder="Nombre">
+                </div>
+                <div class="field">
+                    <label>Apellido</label>
+                    <input type="text" id="apellido" placeholder="Apellido">
+                </div>
+                <div class="field">
+                    <label>DNI</label>
+                    <input type="text" id="dni" placeholder="DNI">
+                </div>
+            </div>
+            <button class='ui button primary'>
+                Guardar
+            </button>
+        </form>
+
+
+        <script>
+            const {ipcRenderer}= require('electron');
+            const form=document.querySelector('form');
+            form.addEventListener('submit', e=>{
+                const nombrePaciente = document.querySelector('#nombre').value;
+                const apellidoPaciente = document.querySelector('#apellido').value;
+                const dniPaciente = document.querySelector('#dni').value;
+                const enviaInfoNuevoPaciente={
+                    nombre:nombrePaciente,
+                    apellido:apellidoPaciente,
+                    dni:dniPaciente
+                };
+                
+                ipcRenderer.send("paciente:nuevo",enviaInfoNuevoPaciente);
+                
+                e.preventDefault();
+            } );
+        
+        </script>
+
+        <div class="ui form">
+            <div class="three fields">
+                <div class="field">
+                    <label>Fecha de Nacimiento</label>
+                    <input type="text" placeholder="Fecha de Nacimiento">
+                </div>
+                <div class="field">
+                    <label>Edad</label>
+                    <input type="text" placeholder="Edad">
+                </div>
+                <div class="field">
+                    <label>Domicilio</label>
+                    <input type="text" placeholder="Domicilio">
+                </div>
+            </div>
+        </div>
+        <div class="ui form">
+            <div class="three fields">
+                <div class="field">
+                    <label>Teléfono</label>
+                    <input type="text" placeholder="Teléfono">
+                </div>
+                <div class="field">
+                    <label>Mail</label>
+                    <input type="text" placeholder="Mail">
+                </div>
+                <div class="field">
+                    <label>Profesión</label>
+                    <input type="text" placeholder="Profesión">
+                </div>
+            </div>
+            <div class="field">
+                <label>¿Cuáles son las razones/motivos por las que consultas?</label>
+                <textarea rows="2"></textarea>
+            </div>
+            <div class="field">
+                <label>¿Tenés algún problema de salud que quieras comentar?</label>
+                <textarea rows="2"></textarea>
+            </div>
+            <h4 class="ui horizontal divider header">Medicación</h4>
+            <div class="field">
+                <label>Medicación</label>
+                <textarea rows="2"></textarea>
+            </div>
+            <h4 class="ui horizontal divider header">Hábitos</h4>
+            <div class="inline fields">
+                <label for="fumas">¿Fumas?</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="fumas" checked="" tabindex="0" class="hidden">
+                        <label>Si</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="fumas" tabindex="0" class="hidden">
+                        <label>No</label>
+                    </div>
+                </div>
+                <div class="two wide field">
+                    <input type="text" placeholder="¿Cuantos por día?">
+                </div>
+            </div>
+            <div class="field">
+                <label>¿Cuantas horas dormís por día? </label>
+                <input type="text" placeholder="¿Cuantas horas dormís por día?">
+            </div>
+            <h4 class="ui horizontal divider header">Relación con la actividad Física</h4>
+            <div class="grouped fields">
+                <label for="estiloVida">1. ¿Cómo consideras que es su estilo de vida?</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estiloVida" checked="" tabindex="0" class="hidden">
+                        <label>Muy Activo</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estiloVida" tabindex="0" class="hidden">
+                        <label>Activo</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estiloVida" tabindex="0" class="hidden">
+                        <label>Poco Activo</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estiloVida" tabindex="0" class="hidden">
+                        <label>Sedentario</label>
+                    </div>
+                </div>
+                <label for="estadoFisico">2. ¿Cómo definirías tu estado físico? </label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estadoFisico" checked="" tabindex="0" class="hidden">
+                        <label>Muy Bueno</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estadoFisico" tabindex="0" class="hidden">
+                        <label>Bueno</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estadoFisico" tabindex="0" class="hidden">
+                        <label>Poco Activo</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estadoFisico" tabindex="0" class="hidden">
+                        <label>Regular</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estadoFisico" tabindex="0" class="hidden">
+                        <label>Malo</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="estadoFisico" tabindex="0" class="hidden">
+                        <label>Muy Malo</label>
+                    </div>
+                </div>
+                <label for="realizarFisico">3. ¿Te gusta realizar actividad física? </label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="realizarFisico" checked="" tabindex="0" class="hidden">
+                        <label>Alta</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="realizarFisico" tabindex="0" class="hidden">
+                        <label>Normal</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="realizarFisico" tabindex="0" class="hidden">
+                        <label>Baja</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="realizarFisico" tabindex="0" class="hidden">
+                        <label>Mínima</label>
+                    </div>
+                </div>
+            </div>
+            <div class="inline fields">
+                <label for="realizarActFisica">4. ¿Realizas alguna Actividad Física?</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="realizarActFisica" checked="" tabindex="0" class="hidden">
+                        <label>Si</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="realizarActFisica" tabindex="0" class="hidden">
+                        <label>No</label>
+                    </div>
+                </div>
+                <div class="two wide field">
+                    <input type="text" placeholder="¿Cuál?">
+                </div>
+            </div>
+            <div class="field">
+                <label>5. Si no hace actividad física, ¿Que le gustaría hacer?</label>
+                <textarea rows="2"></textarea>
+            </div>
+            <h4 class="ui horizontal divider header">Peso</h4>
+            <div class="inline fields">
+                <label>1. ¿Cuál fue tu peso máximo?</label>
+                <div class="two wide field">
+                    <input type="text" placeholder="Kg">
+                </div>
+            </div>
+            <div class="inline fields">
+                <label>2. ¿Cuál fue tu peso mínimo?</label>
+                <div class="two wide field">
+                    <input type="text" placeholder="Kg">
+                </div>
+            </div>
+            <div class="inline fields">
+                <label>3. ¿Cual es tu peso deseado?</label>
+                <div class="two wide field">
+                    <input type="text" placeholder="Kg">
+                </div>
+            </div>
+            <h4 class="ui horizontal divider header">Relación con el tratamiento</h4>
+            <div class="inline fields">
+                <label for="realizarTratamiento">¿Realizo tratamientos anteriormente?</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="realizarTratamiento" checked="" tabindex="0" class="hidden">
+                        <label>Si</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="realizarTratamiento" tabindex="0" class="hidden">
+                        <label>No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <textarea rows="2" placeholder="Comentarios..."></textarea>
+            </div>
+            <h4 class="ui horizontal divider header">Alimentación</h4>
+            <div class="field">
+                <label>1. ¿Alguna comida le produce molestias? </label>
+                <textarea rows="2" placeholder="¿Cuál?"></textarea>
+            </div>
+            <div class="grouped fields">
+                <label for="comidaCasa">2. En su casa la comida es:</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="comidaCasa" checked="" tabindex="0" class="hidden">
+                        <label>Muy engordante</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="comidaCasa" tabindex="0" class="hidden">
+                        <label>Engordante</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="comidaCasa" tabindex="0" class="hidden">
+                        <label>Normal</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="comidaCasa" tabindex="0" class="hidden">
+                        <label>Liviana/ Light </label>
+                    </div>
+                </div>
+            </div>
+            <div class="inline fields">
+                <label>3. Cuantas comidas haces en el día? </label>
+                <div class="two wide field">
+                    <input type="text">
+                </div>
+            </div>
+            <div class="field">
+                <label>4. ¿Le gustaría incluir en su dieta algún alimento preferido?</label>
+                <textarea rows="2" placeholder="¿Cuál?"></textarea>
+            </div>
+            <div class="field">
+                <label>5. ¿Qué alimentos NO le gustan?</label>
+                <textarea rows="2" placeholder="¿Cuales?"></textarea>
+            </div>
+            <h4 class="ui horizontal divider header">Ejemplo de un día tipo</h4>
+            <div class="field">
+                <textarea rows="2" placeholder="Ejemplo..."></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
