@@ -24,6 +24,11 @@
         </h2>        
     </div>
 
+    <!--
+        *Prueba de script que trae datos por el ipcRenderer de electron,          
+        *el cual surge de index.js, para generar codigo html con estos datos y 
+        *agregarse al codigo html con el innerHtml. 
+    -->
     <script>
         const { ipcRenderer } = require('electron');
         const paciente= document.querySelector("#pacientes");
