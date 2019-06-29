@@ -344,11 +344,18 @@
         <!---------------------Separacion de Concepto----------------->
         <h4 class="ui horizontal divider header">Inputs de Tabla</h4>
         <div class="ui form">
-            <div class="three fields">
-                <div class="field">
-                    <label>Fecha</label>
-                    <input type="text" placeholder="Ingrese Fecha...">
-                </div>
+            <div class="inline fields">                
+                    <div class="three wide field">
+                        <label>Fecha</label>
+                        <input type="text" placeholder="Ingrese Fecha...">
+                    </div>                
+                <!--btn Buscar Fecha: tiene que generar una busqueda por fecha y
+                    *traer los datos de esa fecha, luego de editarla, 
+                    *btn Generar Tabla para generar y guardar.
+                -->
+                <button class='ui button secondary'>
+                    Buscar Fecha
+                </button>
             </div>
             <div class="three fields">
                 <div class="field">
@@ -489,4 +496,5 @@
         </div>
     </div>
 </body>
+
 </html>
