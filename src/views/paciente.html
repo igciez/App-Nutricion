@@ -12,9 +12,9 @@
 <body>
     <div class="ui segment">
         <img class="ui centered medium circular image" src="">
-        <h3 class="ui center aligned icon header">Historia Personal</h3>
+        <h1 class="ui center aligned icon header">Historia Personal</h1>
     </div>
-    <div class="ui segment">
+    <div class="ui clearing segment">
         <form class="ui form">
             <div class="three fields">
                 <div class="field">
@@ -40,23 +40,23 @@
             *de electron un objeto de js, primero al index.js y de ahí al index.html
         -->
         <script>
-            const {ipcRenderer}= require('electron');
-            const form=document.querySelector('form');
-            form.addEventListener('submit', e=>{
+            const { ipcRenderer } = require('electron');
+            const form = document.querySelector('form');
+            form.addEventListener('submit', e => {
                 const nombrePaciente = document.querySelector('#nombre').value;
                 const apellidoPaciente = document.querySelector('#apellido').value;
                 const dniPaciente = document.querySelector('#dni').value;
-                const enviaInfoNuevoPaciente={
-                    nombre:nombrePaciente,
-                    apellido:apellidoPaciente,
-                    dni:dniPaciente
+                const enviaInfoNuevoPaciente = {
+                    nombre: nombrePaciente,
+                    apellido: apellidoPaciente,
+                    dni: dniPaciente
                 };
-                
-                ipcRenderer.send("paciente:nuevo",enviaInfoNuevoPaciente);
-                
+
+                ipcRenderer.send("paciente:nuevo", enviaInfoNuevoPaciente);
+
                 e.preventDefault();
-            } );
-        
+            });
+
         </script>
 
         <div class="ui form">
@@ -74,8 +74,6 @@
                     <input type="text" placeholder="Domicilio">
                 </div>
             </div>
-        </div>
-        <div class="ui form">
             <div class="three fields">
                 <div class="field">
                     <label>Teléfono</label>
@@ -98,14 +96,16 @@
                 <label>¿Tenés algún problema de salud que quieras comentar?</label>
                 <textarea rows="2"></textarea>
             </div>
+            <!---------------------Separacion de Concepto----------------->
             <h4 class="ui horizontal divider header">Medicación</h4>
             <div class="field">
                 <label>Medicación</label>
                 <textarea rows="2"></textarea>
             </div>
+            <!---------------------Separacion de Concepto----------------->
             <h4 class="ui horizontal divider header">Hábitos</h4>
             <div class="inline fields">
-                <label for="fumas">¿Fumas?</label>
+                <label for="fumas">¿Fumás?</label>
                 <div class="field">
                     <div class="ui radio checkbox">
                         <input type="radio" name="fumas" checked="" tabindex="0" class="hidden">
@@ -119,14 +119,15 @@
                     </div>
                 </div>
                 <div class="two wide field">
-                    <input type="text" placeholder="¿Cuantos por día?">
+                    <input type="text" placeholder="¿Cuantos por día...?">
                 </div>
             </div>
-            <div class="field">
+            <div class="inline field">
                 <label>¿Cuantas horas dormís por día? </label>
-                <input type="text" placeholder="¿Cuantas horas dormís por día?">
+                <input type="text" placeholder="¿Cuantas horas...?">
             </div>
-            <h4 class="ui horizontal divider header">Relación con la actividad Física</h4>
+            <!---------------------Separacion de Concepto----------------->
+            <h4 class="ui horizontal divider header">Relación con la Actividad Física</h4>
             <div class="grouped fields">
                 <label for="estiloVida">1. ¿Cómo consideras que es su estilo de vida?</label>
                 <div class="field">
@@ -230,33 +231,44 @@
                         <label>No</label>
                     </div>
                 </div>
-                <div class="two wide field">
-                    <input type="text" placeholder="¿Cuál?">
-                </div>
+            </div>
+            <div class="field">
+                <textarea rows="2" placeholder="¿Cuál...?"></textarea>
             </div>
             <div class="field">
                 <label>5. Si no hace actividad física, ¿Que le gustaría hacer?</label>
                 <textarea rows="2"></textarea>
             </div>
+            <!---------------------Separacion de Concepto----------------->
             <h4 class="ui horizontal divider header">Peso</h4>
             <div class="inline fields">
-                <label>1. ¿Cuál fue tu peso máximo?</label>
-                <div class="two wide field">
-                    <input type="text" placeholder="Kg">
+                <label>1.¿Cuál fue tu peso máximo?</label>
+                <div class="ui right labeled input">
+                    <input type="text" placeholder="Ingrese el peso..">
+                    <div class="ui basic label">
+                        kg
+                    </div>
                 </div>
             </div>
             <div class="inline fields">
-                <label>2. ¿Cuál fue tu peso mínimo?</label>
-                <div class="two wide field">
-                    <input type="text" placeholder="Kg">
+                <label>2.¿Cuál fue tu peso mínimo?</label>
+                <div class="ui right labeled input">
+                    <input type="text" placeholder="Ingrese el peso..">
+                    <div class="ui basic label">
+                        kg
+                    </div>
                 </div>
             </div>
             <div class="inline fields">
-                <label>3. ¿Cual es tu peso deseado?</label>
-                <div class="two wide field">
-                    <input type="text" placeholder="Kg">
+                <label>3.¿Cual es tu peso deseado?</label>
+                <div class="ui right labeled input">
+                    <input type="text" placeholder="Ingrese el peso..">
+                    <div class="ui basic label">
+                        kg
+                    </div>
                 </div>
             </div>
+            <!---------------------Separacion de Concepto----------------->
             <h4 class="ui horizontal divider header">Relación con el tratamiento</h4>
             <div class="inline fields">
                 <label for="realizarTratamiento">¿Realizo tratamientos anteriormente?</label>
@@ -276,10 +288,11 @@
             <div class="field">
                 <textarea rows="2" placeholder="Comentarios..."></textarea>
             </div>
+            <!---------------------Separacion de Concepto----------------->
             <h4 class="ui horizontal divider header">Alimentación</h4>
             <div class="field">
                 <label>1. ¿Alguna comida le produce molestias? </label>
-                <textarea rows="2" placeholder="¿Cuál?"></textarea>
+                <textarea rows="2" placeholder="¿Cuál...?"></textarea>
             </div>
             <div class="grouped fields">
                 <label for="comidaCasa">2. En su casa la comida es:</label>
@@ -309,25 +322,171 @@
                 </div>
             </div>
             <div class="inline fields">
-                <label>3. Cuantas comidas haces en el día? </label>
+                <label>3.¿Cuantas comidas haces en el día?</label>
                 <div class="two wide field">
                     <input type="text">
                 </div>
             </div>
             <div class="field">
                 <label>4. ¿Le gustaría incluir en su dieta algún alimento preferido?</label>
-                <textarea rows="2" placeholder="¿Cuál?"></textarea>
+                <textarea rows="2" placeholder="¿Cuál...?"></textarea>
             </div>
             <div class="field">
                 <label>5. ¿Qué alimentos NO le gustan?</label>
-                <textarea rows="2" placeholder="¿Cuales?"></textarea>
+                <textarea rows="2" placeholder="¿Cuales...?"></textarea>
             </div>
+            <!---------------------Separacion de Concepto----------------->
             <h4 class="ui horizontal divider header">Ejemplo de un día tipo</h4>
             <div class="field">
                 <textarea rows="2" placeholder="Ejemplo..."></textarea>
             </div>
         </div>
+        <!---------------------Separacion de Concepto----------------->
+        <h4 class="ui horizontal divider header">Inputs de Tabla</h4>
+        <div class="ui form">
+            <div class="three fields">
+                <div class="field">
+                    <label>Fecha</label>
+                    <input type="text" placeholder="Ingrese Fecha...">
+                </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>Peso</label>
+                    <div class="ui right labeled input">
+                        <input type="text" placeholder="Ingrese el peso..">
+                        <div class="ui basic label">
+                            kg
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>% De Grasa</label>
+                    <input type="text" placeholder="H:18-24%  M:25-31 %">
+                </div>
+                <div class="field">
+                    <label>Circ. Cintura</label>
+                    <input type="text" placeholder="Circ. Cintura...">
+                </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>Talla</label>
+                    <div class="ui right labeled input">
+                        <input type="text" placeholder="Ingrese la Talla...">
+                        <div class="ui basic label">
+                            cm
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Desc.</label>
+                    <input type="text" placeholder="Ingrese el Desc...">
+                </div>
+                <div class="field">
+                    <label>IMC</label>
+                    <input type="text" placeholder="Ingrese IMC...">
+                </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>Desc. Total</label>
+                    <input type="text" placeholder="Ingrese el Desc. Total...">
+                </div>
+                <div class="field">
+                    <label>Diuresis</label>
+                    <input type="text" placeholder="Ingrese Diuresis...">
+                </div>
+                <div class="field">
+                    <label>Hidratación</label>
+                    <input type="text" placeholder="Ingrese Hidratación...">
+                </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>Catarsis</label>
+                    <input type="text" placeholder="Catarsis...">
+                </div>
+                <div class="field">
+                    <label>Organiz</label>
+                    <input type="text" placeholder="Ingrese Organiz...">
+                </div>
+                <div class="field">
+                    <label>Apetito</label>
+                    <input type="text" placeholder="Ingrese Apetito...">
+                </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>Distribución</label>
+                    <input type="text" placeholder="Distribución...">
+                </div>
+                <div class="field">
+                    <label>Movimiento</label>
+                    <input type="text" placeholder="Ingrese Movimiento...">
+                </div>
+            </div>
+            <div class="inline fields">
+                <button class='ui button secondary'>
+                    Generar Tabla
+                </button>
+                <button class='ui button secondary'>
+                    Generar Grafico
+                </button>
+            </div>
+        </div>
+        <!---------------------Separacion de Concepto----------------->
+        <h4 class="ui horizontal divider header">Tabla</h4>
+        <table class="ui striped table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Peso</th>
+                    <th>% de grasa</th>
+                    <th>Circ Cintura</th>
+                    <th>Talla</th>
+                    <th>Desc</th>
+                    <th>IMC</th>
+                    <th>Desc. Total</th>
+                    <th>Diuresis</th>
+                    <th>Hidratación</th>
+                    <th>Catarsis</th>
+                    <th>Organiz</th>
+                    <th>Apetito</th>
+                    <th>Distribución</th>
+                    <th>Movimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>September 14, 2013</td>
+                    <td>75 Kg</td>
+                    <td>24%</td>
+                    <td>75 cm</td>
+                </tr>
+            </tbody>
+        </table>
+        <!---------------------Separacion de Concepto----------------->
+        <h4 class="ui horizontal divider header">Gráfico</h4>
+        <img class="ui centered big image" src="../../imagenes/grafico-peso.jpg">
+        <!---------------------Separacion de Concepto----------------->
+        <h4 class="ui horizontal divider header">Objetivo y evolución</h4>
+        <div class="ui form">
+            <div class="field">
+                <textarea rows="2" placeholder="Objetivo y evolución..."></textarea>
+            </div>
+            </form>
+        </div>
+        <!---------------------Separacion de Concepto----------------->
+        <h4 class="ui horizontal divider header">Imprimir - Cancelar - Guardar</h4>
+        <div class="inline fields">
+            <button class="ui black basic button">Imprimir</button>
+            <div class="ui right floated buttons">
+                <button class="ui button">Cancelar</button>
+                <div class="or" data-text="o"></div>
+                <button class="ui positive button active">Guardar</button>
+            </div>
+        </div>
     </div>
 </body>
-
 </html>
