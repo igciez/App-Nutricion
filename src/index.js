@@ -4,6 +4,7 @@ const path = require ('path');
 let mainWindow;
 let newPacienteWindow;
 
+
 /**
  * Funcion que hace que electron se actualize ante cualquier cambio de codigo(no funciona)
  */
@@ -14,7 +15,7 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 /**
- * Trae informacion de depencia .send de Electron
+ * ipcMain maneja informacion dentro de Electron.
  */
 ipcMain.on('paciente:nuevo',(e, enviaInfoNuevoPaciente)=>{
     mainWindow.webContents.send('paciente:nuevo',enviaInfoNuevoPaciente);
@@ -76,12 +77,12 @@ if(process.env.NODE_ENV !== 'production'){
 const mainMenu= Menu.buildFromTemplate(templateMenu);
 
 /**
- * Propiedad de electron, que hace que se ejecute en primer lugar la funcion 
+ * Evento que hace que se ejecute la proceso principal de electron 
  */
 app.on('ready', ()=>{ 
     /**
      * Variable que se asocia a propiedad de electron,
-     * donde se pueden dar valor a los atributos de la ventana.
+     * donde se pueden dar valores a los atributos de la ventana.
      */
     mainWindow =new BrowserWindow({
         title: "Nutri & Vida",
@@ -103,6 +104,7 @@ app.on('ready', ()=>{
      * Propiedad de electron que se usa para generar el menu.
      */
     Menu.setApplicationMenu(mainMenu);
+ 
     
     /**
      * Propiedad que cierra todas las ventanas cuando se cierra la venta principal
